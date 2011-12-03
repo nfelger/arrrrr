@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Green Room</title>
-  <link rel="stylesheet" href="sp://import/css/adam.css">
-  <link rel="stylesheet" href="base_style.css">
-</head>
-<body onload="sp = getSpotifyApi(1); greenRoom = sp.require('green_room'); greenRoom.init();">
-<h1 id="header">Welcome to the Green Room</h1>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Green Room</title>
+    <script src="javascripts/jquery-1.6.4.min.js"></script>
+    <link rel="stylesheet" href="sp://import/css/adam.css">
+    <link rel="stylesheet" href="base_style.css">
+  </head>
+  <body>
+    <h1 id="header">Welcome to the Green Room</h1>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        console.log('All Systems go.');
+        sp = getSpotifyApi(1);
+        greenRoom = sp.require('javascripts/green_room');
+        greenRoom.init({
+          sp: sp
+        });
+      });
+    </script>
+  </body>
 </html>
