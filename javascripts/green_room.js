@@ -1,24 +1,24 @@
-sp = getSpotifyApi(1);
+var GreenRoom = function(sp) {
+  this._sp = sp;
+};
 
-exports.init = init;
+GreenRoom.prototype.init = function() {
+  this.updatePageWithTrackDetails();
 
-function init() {
-  updatePageWithTrackDetails();
-
-  sp.trackPlayer.addEventListener("playerStateChanged", function (event) {
+  this._sp.trackPlayer.addEventListener("playerStateChanged", function (event) {
 
     // Only update the page if the track changed
     if (event.data.curtrack == true) {
-      updatePageWithTrackDetails();
+      this.updatePageWithTrackDetails();
     }
   });
-}
+};
 
-function updatePageWithTrackDetails() {
+GreenRoom.prototype.updatePageWithTrackDetails = function() {
   var header = document.getElementById("header");
 
   // This will be null if nothing is playing.
-  var playerTrackInfo = sp.trackPlayer.getNowPlayingTrack();
+  var playerTrackInfo = this._sp.trackPlayer.getNowPlayingTrack();
 
   if (!playerTrackInfo) {
     header.innerText = "Nothing playing!";
@@ -26,9 +26,9 @@ function updatePageWithTrackDetails() {
     var track = playerTrackInfo.track;
     header.innerText = track.name + " from the album " + track.album.name + " by " + track.album.artist.name + ".";
   }
-}
+};
 
-function searchGoogleForSpotify() {
+GreenRoom.prototype.searchGoogleForSpotify = function() {
   var req = new XMLHttpRequest();
   req.open("GET", "https://www.googleapis.com/customsearch/v1?q=spotify", true);
 
@@ -44,3 +44,5 @@ function searchGoogleForSpotify() {
 
   req.send();
 }
+
+exports.GreenRoom = GreenRoom;
