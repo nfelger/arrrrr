@@ -1,0 +1,15 @@
+{
+  "BundleType": "Application",
+  "AppIcon": {
+    "36x18": "tutorial.png"
+  },
+  "AppName": {
+    "en": "GreenRoom"
+  },
+  "SupportedLanguages": [
+    "en"
+  ],
+  "RequiredPermissions": [
+    "https://www.googleapis.com"
+  ]
+}
