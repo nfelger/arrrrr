@@ -3,3 +3,31 @@ h1 {
   font-size: 24px;
   padding: 20px;
 }
+
+#playlist {
+  background-color: white;
+  border-radius: 5px;  
+  margin: auto;
+  padding: 10px;
+  width: 700px;
+}
+
+#flags {
+  margin: auto;
+  width: 525px;
+}
+
+.flag {
+  background-color: #ccc;
+  border-radius: 3px;
+  float: left;
+  padding: 6px;
+  margin: 50px;
+}
+
+.verticalDivider {
+  border-right: 1px solid #666;
+  float: left;
+  height: 150px;
+  margin-top: 50px;
+}

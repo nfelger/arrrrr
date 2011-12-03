@@ -2,21 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Green Room</title>
+    <title>Arrrrr</title>
     <script src="javascripts/jquery-1.6.4.min.js"></script>
     <link rel="stylesheet" href="sp://import/css/adam.css">
     <link rel="stylesheet" href="sp://import/css/api.css">
     <link rel="stylesheet" href="base_style.css">
   </head>
   <body>
-    <h1 id="header">Welcome to the Green Room</h1>
+    <h1 id="header">Is it better to be a pirate than to join the Navy?</h1>
+    <div id="flags">
+      <div class="flag">
+        <img src="/assets/9pirates.png">
+      </div>
+      <div class="verticalDivider"></div>
+      <div class="flag">
+        <img src="/assets/navify.png">
+      </div> 
+    </div>
+    <div id="playlist"></div>
     <script type="text/javascript">
       $(document).ready(function() {
         console.log('All Systems go.');
         sp = getSpotifyApi(1);
-        gr = sp.require('javascripts/green_room');
-        greenRoom = new gr.GreenRoom(sp);
-        greenRoom.init();
+        ar = sp.require('javascripts/green_room');
+        arrrrr = new gr.Arrrrr(sp);
+        arrrrr.init();
       });
     </script>
   </body>

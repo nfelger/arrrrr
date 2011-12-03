@@ -1,12 +1,16 @@
-var GreenRoom = function(sp) {
+var Arrrrr = function(sp) {
   this._sp = sp;
+  this._playerApi = {
+    models: sp.require("sp://import/scripts/api/models"),
+    views:  sp.require("sp://import/scripts/api/views")
+  };
 };
 
-GreenRoom.prototype.init = function() {
-  this.updatePageWithTrackDetails();
+Arrrrr.prototype.init = function() {
+//  this.loadPlaylist();
+//  this.updatePageWithTrackDetails();
 
   this._sp.trackPlayer.addEventListener("playerStateChanged", function (event) {
-
     // Only update the page if the track changed
     if (event.data.curtrack == true) {
       this.updatePageWithTrackDetails();
@@ -14,7 +18,7 @@ GreenRoom.prototype.init = function() {
   });
 };
 
-GreenRoom.prototype.updatePageWithTrackDetails = function() {
+Arrrrr.prototype.updatePageWithTrackDetails = function() {
   var header = document.getElementById("header");
 
   // This will be null if nothing is playing.
@@ -28,21 +32,20 @@ GreenRoom.prototype.updatePageWithTrackDetails = function() {
   }
 };
 
-GreenRoom.prototype.searchGoogleForSpotify = function() {
-  var req = new XMLHttpRequest();
-  req.open("GET", "https://www.googleapis.com/customsearch/v1?q=spotify", true);
+Arrrrr.prototype.loadPlaylist = function() {
+  var m = this._playerApi.models,
+  v = this._playerApi.views;
 
-    req.onreadystatechange = function() {
-    console.log(req.status);
+  var tpl = new m.Playlist();
+  var tplPlayer = new v.Player();
+  var tempList = new v.List(tpl);
+  tpl.add(m.Track.fromURI("spotify:track:4z4t4zEn4ElVPGmDWCzRQf"));
+  tpl.add(m.Track.fromURI("http://open.spotify.com/track/7E8JGVhbwWgAQ1DtfatQEl"));
+  tplPlayer.track = tpl.get(0);
+  tplPlayer.context = tpl;
 
-    if (req.readyState == 4) {
-      if (req.status == 200) {
-        console.log("Search complete");
-      }
-    }
-  };
+  $(tempList.node).addClass("sp-light");
+  $('#playlist').append(tempList.node);
+};
 
-  req.send();
-}
-
-exports.GreenRoom = GreenRoom;
+exports.Arrrrr = Arrrrr;
