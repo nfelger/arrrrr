@@ -7,13 +7,23 @@ var Arrrrr = function(sp) {
 };
 
 Arrrrr.prototype.init = function() {
+  $.getJSON('http://lolhost:4567/pirates', function(d){
+    var pirates = d.pirates;
+    var pul=$('#pirates');
+    pirates.
+      sort(function(a,b){return b.downloads - a.downloads;}).
+      forEach(function(pirate) {
+        pul.append($('<li>'+pirate.name+': '+pirate.downloads+'</li>'));
+    });
+  })
+  
 //  this.loadPlaylist();
 //  this.updatePageWithTrackDetails();
 
   this._sp.trackPlayer.addEventListener("playerStateChanged", function (event) {
     // Only update the page if the track changed
     if (event.data.curtrack == true) {
-      this.updatePageWithTrackDetails();
+//      this.updatePageWithTrackDetails();
     }
   });
 };

@@ -10,6 +10,8 @@
     "en"
   ],
   "RequiredPermissions": [
-    "https://www.googleapis.com"
+    "http://api.semetric.com/",
+    "http://api.songkick.com/",
+    "http://lolhost/"
   ]
 }

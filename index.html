@@ -19,13 +19,15 @@
         <img src="/assets/navify.png">
       </div> 
     </div>
-    <div id="playlist"></div>
+    <br>
+    <ul id="pirates"></ul>
+    <!--    <div id="playlist"></div> -->
     <script type="text/javascript">
       $(document).ready(function() {
         console.log('All Systems go.');
         sp = getSpotifyApi(1);
         ar = sp.require('javascripts/green_room');
-        arrrrr = new gr.Arrrrr(sp);
+        arrrrr = new ar.Arrrrr(sp);
         arrrrr.init();
       });
     </script>
